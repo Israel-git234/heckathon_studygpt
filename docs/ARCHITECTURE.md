@@ -6,10 +6,10 @@ StudyGPT is a full-stack web application that transforms YouTube educational con
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   React Frontend │    │  Flask Backend  │    │   AI Services   │
-│                 │    │                 │    │                 │
+│   React Frontend │    │  Flask Backend  │   │   AI Services   │
+│                 │    │                 │    │                  │
 │  • Video Input  │───▶│  • API Routes   │───▶│  • Google Gemini│
-│  • Course View  │    │  • File Upload  │    │  • YouTube API  │
+│  • Course View  │    │  • File Upload  │     │  • YouTube API  │
 │  • AI Chat      │    │  • AI Integration│    │  • Transcript   │
 │  • Progress     │◀───│  • Error Handle │◀───│    Processing   │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
@@ -159,7 +159,7 @@ FRONTEND_URL=http://localhost:3000
 ```
 
 ### AI Service Configuration
-- **Gemini Model**: `gemini-1.5-flash`
+- **Gemini Model**: `gemini-1.5-flash` # advanced ai for production
 - **Max Retries**: 3 attempts with exponential backoff
 - **Temperature**: 0.3 (focused, educational responses)
 - **Token Limits**: Configurable per request type
@@ -185,46 +185,4 @@ Frontend (localhost:3000) ←→ Backend (localhost:5000) ←→ AI APIs
         External AI APIs
 ```
 
-## 📊 Performance Considerations
 
-### Optimization Strategies
-1. **Parallel Processing**: Concurrent video analysis using ThreadPoolExecutor
-2. **Caching**: Frontend progress in localStorage
-3. **Lazy Loading**: On-demand component rendering
-4. **Error Recovery**: Retry logic with exponential backoff
-5. **Resource Management**: Memory-efficient file processing
-
-### Scalability Features
-- **Stateless Backend**: Horizontal scaling ready
-- **Docker Containerization**: Easy deployment
-- **Modular Architecture**: Independent service scaling
-- **API Rate Limiting**: Built-in throttling
-
-## 🔒 Security Features
-
-### Data Protection
-- **Environment Variables**: Secure API key storage
-- **Input Validation**: Comprehensive request sanitization
-- **CORS Configuration**: Restricted origin access
-- **File Upload Limits**: Size and type restrictions
-- **Error Handling**: Sanitized error responses
-
-### AI Safety
-- **Content Filtering**: Educational content focus
-- **Response Validation**: Structured output verification
-- **Rate Limiting**: API usage throttling
-- **Fallback Mechanisms**: Graceful degradation
-
-## 🧪 Testing Strategy
-
-### Automated Testing
-- **Unit Tests**: Individual component testing
-- **Integration Tests**: API endpoint validation
-- **End-to-End Tests**: Complete workflow verification
-- **Performance Tests**: Load and stress testing
-
-### Manual Testing
-- **Browser Compatibility**: Cross-browser validation
-- **Mobile Responsiveness**: Multi-device testing
-- **User Experience**: Workflow optimization
-- **Error Scenarios**: Edge case handling
