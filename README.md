@@ -62,15 +62,16 @@ python app.py
 
 ### 3. Frontend Setup
 ```bash
-cd frontend
+cd src
 npm install
 npm start
 ```
 
-### 4. Test Everything
+### 4. Quick Start with Docker (Recommended)
 ```bash
-# From project root
-python test_apis.py
+# Automated setup and run
+python scripts/setup.py
+python scripts/build_and_run.py
 ```
 
 ## 🔑 API Keys Setup
@@ -193,28 +194,67 @@ cd frontend
 REACT_APP_DEBUG=true npm start
 ```
 
-## 🏆 Hackathon Features
+## 🏆 Hackathon Ready Features
 
-- ✅ **MVP Complete**: Full YouTube-to-course pipeline
-- ✅ **AI Integration**: Google Gemini AI-powered content analysis
-- ✅ **Interactive UI**: Modern React frontend with quizzes
-- ✅ **Error Handling**: Comprehensive error management
-- ✅ **Progress Tracking**: Learning analytics and completion status
-- ✅ **Responsive Design**: Works on desktop and mobile
+### ✅ **Core Implementation**
+- **MVP Complete**: Full YouTube-to-course generation pipeline
+- **AI Integration**: Google Gemini for intelligent content analysis  
+- **Modern Stack**: React + Flask + Docker architecture
+- **Production Ready**: Comprehensive error handling and logging
 
-## 🔮 Future Enhancements
+### ✅ **Advanced Features**
+- **Document Summarization**: PDF/PPTX/DOCX upload and AI analysis
+- **AI Tutor Chat**: Interactive Q&A for learning assistance
+- **Progress Persistence**: localStorage tracking across sessions
+- **Video Recommendations**: AI-suggested learning sequences
 
-- [ ] Lecture slide integration (PDF/PPT upload)
-- [ ] Multi-language support
-- [ ] Advanced course customization
-- [ ] User authentication and saved courses
-- [ ] Mobile app development
-- [ ] LMS integration (Canvas, Moodle)
+### ✅ **Technical Excellence**
+- **Scalable Architecture**: Clean service separation and modularity
+- **Docker Deployment**: Production-ready containerization
+- **Comprehensive Documentation**: Usage guides and technical docs
+- **Educational Impact**: Real learning value for students worldwide
+
+## 📋 Project Structure
+
+```
+studygpt/
+├── src/              # React frontend application
+├── backend/          # Flask API server
+├── scripts/          # Automation and deployment scripts
+├── docs/             # Comprehensive documentation
+├── demo/             # Demo materials and screenshots
+├── assets/           # Branding and visual assets
+├── Dockerfile        # Container configuration
+├── .dockerignore     # Docker build optimization
+├── .gitignore        # Version control rules
+└── README.md         # Project overview (this file)
+```
+
+## 🎥 Demo & Documentation
+
+- **📺 [Demo Video](youtu.be/placeholder)** - Complete feature demonstration
+- **📚 [Usage Guide](docs/USAGE.md)** - Detailed user instructions  
+- **🏗️ [Architecture](docs/ARCHITECTURE.md)** - Technical documentation
+- **🎬 [Demo Materials](demo/)** - Screenshots and presentation materials
+
+## 🚀 Deployment Options
+
+### Local Development
+```bash
+python scripts/setup.py      # Automated setup
+cd backend && python app.py  # Start backend
+cd src && npm start          # Start frontend
+```
+
+### Docker Production
+```bash
+python scripts/build_and_run.py  # One-command deployment
+```
 
 ## 📄 License
 
-Built for hackathon demonstration purposes.
+MIT License - Built for South African Intervarsity Hackathon 2025
 
 ---
 
-**Built with ❤️ for the hackathon - StudyWeave AI**
+**🎓 StudyGPT - Transform Learning with AI**
