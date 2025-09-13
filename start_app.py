@@ -65,7 +65,7 @@ def check_dependencies():
     # Check Python dependencies
     try:
         import flask
-        import openai
+        import google.generativeai as genai
         from googleapiclient.discovery import build
         from youtube_transcript_api import YouTubeTranscriptApi
         print("✅ Python dependencies OK")

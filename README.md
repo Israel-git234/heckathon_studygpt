@@ -1,15 +1,37 @@
-# 🎓 StudyWeave AI
+# 🎓 StudyGPT - AI-Powered Learning Assistant
 
-Transform scattered YouTube videos into structured, personalized learning courses with AI-powered analysis and interactive quizzes.
+> **🏆 Hackathon-Ready Educational Platform**  
+> Transform any YouTube video into a complete, interactive learning experience powered by Google Gemini AI.
 
-## ✨ Features
+## 🚀 Platform Overview
 
-- **🎥 YouTube Integration**: Extract video metadata and transcripts automatically
-- **🤖 AI-Powered Analysis**: Generate key concepts, summaries, and quizzes using OpenAI
-- **⏰ Timestamped Learning**: Jump directly to relevant video sections for each concept
-- **🧠 Interactive Quizzes**: Test your knowledge with AI-generated questions
-- **📚 Structured Courses**: Organize content into logical learning modules
-- **📊 Progress Tracking**: Monitor your learning journey and completion status
+StudyGPT revolutionizes online learning by converting YouTube educational content into structured, AI-enhanced courses. Whether you're a student, educator, or lifelong learner, our platform provides intelligent study tools that maximize learning efficiency.
+
+## ✨ Core Features
+
+### 🎯 **Smart Course Generation**
+- **YouTube Integration**: Paste any educational YouTube URL for instant analysis
+- **AI-Powered Extraction**: Gemini AI identifies key concepts with precise timestamps
+- **Intelligent Fallbacks**: Works even when video transcripts are unavailable
+- **Recommended Sequence**: AI suggests optimal video watching order
+
+### 📚 **Interactive Learning Experience**  
+- **Notes-First Approach**: Study AI-generated concepts before watching videos
+- **Timestamp Navigation**: Auto-jump to relevant video segments
+- **Progress Persistence**: Your learning progress saves across sessions
+- **Embedded Player**: Seamless YouTube integration with auto-pause
+
+### 🤖 **AI Study Assistant**
+- **Contextual Q&A**: Ask questions about specific concepts or videos
+- **Document Analysis**: Upload PDFs, PPTX, DOCX for AI summarization
+- **Video Recommendations**: Get suggested related content
+- **Generic Tutor Chat**: Clean ChatGPT-style interface for any study questions
+
+### 🎨 **Modern Interface**
+- **Tabbed Navigation**: Videos, Upload, and Tutor sections
+- **Educational Design**: Calming, professional theme optimized for focus
+- **Responsive Layout**: Works perfectly on desktop and mobile
+- **Intuitive Workflow**: Streamlined experience for maximum productivity
 
 ## 🚀 Quick Start
 
@@ -17,12 +39,12 @@ Transform scattered YouTube videos into structured, personalized learning course
 - Python 3.8+
 - Node.js 16+
 - YouTube Data API key
-- OpenAI API key
+- Google Gemini API key
 
 ### 1. Clone and Setup
 ```bash
 git clone <your-repo-url>
-cd studyweave-ai
+cd studygpt
 ```
 
 ### 2. Backend Setup
@@ -60,10 +82,10 @@ python test_apis.py
 4. Create credentials (API Key)
 5. Add to `.env`: `YOUTUBE_API_KEY=your_key_here`
 
-### OpenAI API
-1. Go to [OpenAI Platform](https://platform.openai.com/)
+### Google Gemini API
+1. Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
 2. Create account and get API key
-3. Add to `.env`: `OPENAI_API_KEY=sk-your_key_here`
+3. Add to `.env`: `GEMINI_API_KEY=your_key_here`
 
 ## 🏗️ Project Structure
 
@@ -74,7 +96,7 @@ studyweave-ai/
 │   ├── config.py              # Configuration management
 │   ├── services/
 │   │   ├── youtube_service.py # YouTube API integration
-│   │   ├── ai_service.py      # OpenAI integration
+│   │   ├── ai_service.py      # Google Gemini AI integration
 │   │   └── course_builder.py  # Main orchestration
 │   └── requirements.txt
 ├── frontend/
@@ -95,7 +117,7 @@ studyweave-ai/
 2. **Processing**: 
    - Extract video metadata via YouTube API
    - Get transcripts using YouTube Transcript API
-   - Analyze content with OpenAI GPT-3.5-turbo
+   - Analyze content with Google Gemini AI
 3. **Output**: Structured course with:
    - Key concepts with timestamps
    - AI-generated summaries
@@ -111,7 +133,7 @@ python test_apis.py
 
 This will test:
 - YouTube Data API connectivity
-- OpenAI API functionality  
+- Google Gemini API functionality  
 - Backend endpoint responses
 - Course generation pipeline
 
@@ -147,7 +169,7 @@ npm start      # Runs on http://localhost:3000
 Create a `.env` file in the backend directory:
 ```env
 YOUTUBE_API_KEY=your_youtube_api_key_here
-OPENAI_API_KEY=sk-your_openai_key_here
+GEMINI_API_KEY=your_gemini_key_here
 FLASK_DEBUG=true
 SECRET_KEY=your-secret-key-here
 ```
@@ -156,7 +178,7 @@ SECRET_KEY=your-secret-key-here
 
 ### Common Issues
 1. **YouTube API Quota Exceeded**: Wait for quota reset or check usage
-2. **OpenAI API Errors**: Verify API key and billing status
+2. **Gemini API Errors**: Verify API key and billing status
 3. **No Transcripts**: Some videos don't have captions available
 4. **CORS Issues**: Ensure backend is running on port 5000
 
@@ -174,7 +196,7 @@ REACT_APP_DEBUG=true npm start
 ## 🏆 Hackathon Features
 
 - ✅ **MVP Complete**: Full YouTube-to-course pipeline
-- ✅ **AI Integration**: OpenAI-powered content analysis
+- ✅ **AI Integration**: Google Gemini AI-powered content analysis
 - ✅ **Interactive UI**: Modern React frontend with quizzes
 - ✅ **Error Handling**: Comprehensive error management
 - ✅ **Progress Tracking**: Learning analytics and completion status

@@ -154,7 +154,7 @@ def main():
     print("\n📋 Next steps:")
     print("1. Edit backend/.env and add your API keys:")
     print("   - YOUTUBE_API_KEY=your_youtube_key")
-    print("   - OPENAI_API_KEY=sk-your_openai_key")
+    print("   - GEMINI_API_KEY=your_gemini_key")
     print("\n2. Test the setup:")
     print("   python test_apis.py")
     print("\n3. Start the application:")

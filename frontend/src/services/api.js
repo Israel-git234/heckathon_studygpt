@@ -3,13 +3,19 @@ import axios from 'axios';
 // Configure base URL for API
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000';
 
-// Create axios instance with default config
+// Create axios instance with enhanced config
 const api = axios.create({
   baseURL: `${API_BASE_URL}/api`,
-  timeout: 30000, // 30 second timeout for AI processing
+  timeout: 60000, // Increased timeout for AI processing
   headers: {
     'Content-Type': 'application/json',
   },
+  // Retry configuration
+  retry: 3,
+  retryDelay: 1000,
+  retryCondition: (error) => {
+    return error.response?.status >= 500 || error.code === 'ECONNABORTED';
+  }
 });
 
 // Request interceptor for logging
@@ -32,6 +38,46 @@ api.interceptors.response.use(
   },
   (error) => {
     console.error('❌ API Response Error:', error.response?.data || error.message);
+    
+    // Enhanced error handling with user-friendly messages
+    if (error.response) {
+      // Server responded with error status
+      const status = error.response.status;
+      const data = error.response.data;
+      
+      switch (status) {
+        case 400:
+          error.message = data.message || 'Invalid request. Please check your input.';
+          break;
+        case 403:
+          error.message = 'API access forbidden. Please check your API keys.';
+          break;
+        case 404:
+          error.message = 'API endpoint not found.';
+          break;
+        case 413:
+          error.message = 'Request too large. Please try with fewer videos.';
+          break;
+        case 429:
+          error.message = 'Too many requests. Please wait and try again.';
+          break;
+        case 500:
+          error.message = data.message || 'Server error. Please try again later.';
+          break;
+        case 503:
+          error.message = 'Service temporarily unavailable. Please try again later.';
+          break;
+        default:
+          error.message = data.message || `Server error (${status}). Please try again.`;
+      }
+    } else if (error.request) {
+      // Network error
+      error.message = 'Network error. Please check your internet connection.';
+    } else {
+      // Other error
+      error.message = error.message || 'An unexpected error occurred.';
+    }
+    
     return Promise.reject(error);
   }
 );
@@ -78,6 +124,13 @@ export const apiService = {
     }
   }
 };
+
+// Tutor Q&A
+export async function askAI(question, video, concept) {
+  const payload = { question, video, concept };
+  const response = await api.post('/ask-question', payload);
+  return response.data;
+}
 
 // Utility functions
 export const isValidYouTubeUrl = (url) => {

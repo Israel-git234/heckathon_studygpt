@@ -1,7 +1,7 @@
 .module-card {
-  background: white;
+  background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card, 0 4px 12px rgba(0,0,0,0.08));
   border: 2px solid transparent;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -33,7 +33,7 @@
 .concept-name {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #2d3748;
+  color: #1f2937;
   margin: 0 0 0.5rem 0;
   line-height: 1.3;
 }
@@ -43,7 +43,7 @@
   flex-direction: column;
   gap: 0.25rem;
   font-size: 0.9rem;
-  color: #718096;
+  color: #6b7280;
 }
 
 .video-title {
@@ -57,7 +57,7 @@
   align-items: center;
   gap: 0.25rem;
   font-weight: 500;
-  color: #667eea;
+  color: hsl(213,94%,38%);
 }
 
 .completion-status {
@@ -75,7 +75,7 @@
 }
 
 .concept-summary p {
-  color: #4a5568;
+  color: #374151;
   line-height: 1.6;
   margin: 0;
   font-size: 1rem;
@@ -199,6 +199,30 @@
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid #e2e8f0;
+}
+
+.askai-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.askai-section textarea {
+  width: 100%;
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.askai-answer {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.75rem;
+  white-space: pre-wrap;
 }
 
 /* Responsive design */
