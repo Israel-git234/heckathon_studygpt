@@ -128,7 +128,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>🎓 StudyWeave AI</h1>
+        <h1>🎓 StudyGPT</h1>
         <p>Transform scattered YouTube videos into structured, interactive learning courses</p>
         
         {!isOnline && (
@@ -211,7 +211,7 @@ function App() {
       </main>
 
       <footer className="App-footer">
-        <p>Built with ❤️ for the hackathon - StudyWeave AI</p>
+        <p>Built with ❤️ for the hackathon - StudyGPT</p>
       </footer>
     </div>
   );
