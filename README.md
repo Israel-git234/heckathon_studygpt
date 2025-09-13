@@ -12,5 +12,5 @@ Transform scattered YouTube videos into structured, personalized learning course
 - Backend: Python Flask
 - Frontend: React
 - APIs: YouTube Data API, OpenAI/Gemini, Whisper
-- Database: MongoDB
+- Database:
 
