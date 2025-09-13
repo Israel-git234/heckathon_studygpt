@@ -1,5 +1,5 @@
-from youtube_service import YouTubeService
-from ai_service import AIService
+from .youtube_service import YouTubeService
+from .ai_service import AIService
 import logging
 
 logger = logging.getLogger(__name__)

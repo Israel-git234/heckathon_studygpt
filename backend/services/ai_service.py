@@ -1,4 +1,4 @@
-import openai
+import google.generativeai as genai
 from config import Config
 import json
 import re
@@ -8,7 +8,9 @@ logger = logging.getLogger(__name__)
 
 class AIService:
     def __init__(self):
-        openai.api_key = Config.OPENAI_API_KEY
+        # Configure Gemini API
+        genai.configure(api_key=Config.GEMINI_API_KEY)
+        self.model = genai.GenerativeModel('gemini-1.5-flash')
     
     def extract_concepts_and_timestamps(self, video_data):
         """Extract key concepts with timestamps from video transcript"""
@@ -27,17 +29,16 @@ class AIService:
         prompt = self._build_concept_extraction_prompt(video_data, transcript_text)
         
         try:
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are an expert educational content analyzer. Extract key learning concepts from video transcripts with precise timestamps."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.7,
-                max_tokens=1500
+            # Use Gemini API instead of OpenAI
+            response = self.model.generate_content(
+                f"You are an expert educational content analyzer. Extract key learning concepts from video transcripts with precise timestamps.\n\n{prompt}",
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.7,
+                    max_output_tokens=1500,
+                )
             )
             
-            result = response.choices[0].message.content.strip()
+            result = response.text.strip()
             logger.info(f"AI analysis completed for video: {video_data.get('title', 'Unknown')}")
             
             # Try to parse JSON response

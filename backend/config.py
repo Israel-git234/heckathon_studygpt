@@ -1,12 +1,15 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load environment variables from multiple possible locations
+load_dotenv()  # Current directory
+load_dotenv('../.env')  # Parent directory
+load_dotenv('.env')  # Explicit .env file
 
 class Config:
-    # API Keys
-    YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY')
-    OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+    # API Keys - with fallback values for testing
+    YOUTUBE_API_KEY = os.getenv('YOUTUBE_API_KEY', 'AIzaSyAirVXZJ246Oai1kwF7-St5mMgUNaQ1M0M')
+    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', 'AIzaSyChJ9ZHK0fdHmk7OvPytV9n89DHLA5ttTU')
     
     # Flask Configuration
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
@@ -23,7 +26,7 @@ class Config:
         """Validate that required configuration is present"""
         required_keys = {
             'YOUTUBE_API_KEY': cls.YOUTUBE_API_KEY,
-            'OPENAI_API_KEY': cls.OPENAI_API_KEY
+            'GEMINI_API_KEY': cls.GEMINI_API_KEY
         }
         
         missing_keys = [key for key, value in required_keys.items() if not value]

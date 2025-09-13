@@ -1,80 +1,81 @@
 import React, { useState } from 'react';
+import VideoInput from './components/VideoInput';
+import CourseViewer from './components/CourseViewer';
+import { apiService } from './services/api';
 import './App.css';
 
 function App() {
-  const [videoUrls, setVideoUrls] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [courseData, setCourseData] = useState(null);
+  const [previewData, setPreviewData] = useState(null);
 
-  // Handle video URL input
-  const handleVideoInput = (e) => {
-    setVideoUrls(e.target.value);
-  };
-
-  // Process video URLs and generate course
-  const handleGenerateCourse = async () => {
-    if (!videoUrls.trim()) {
-      alert('Please enter at least one YouTube video URL');
-      return;
-    }
-
+  // Handle course generation
+  const handleGenerateCourse = async (videoUrls) => {
     setIsLoading(true);
+    setCourseData(null);
+    setPreviewData(null);
     
     try {
-      // Split URLs by newline and filter out empty strings
-      const urls = videoUrls.split('\n').filter(url => url.trim());
-      
-      const response = await fetch('/api/generate-course', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ video_urls: urls }),
-      });
-
-      const data = await response.json();
+      const data = await apiService.generateCourse(videoUrls);
       setCourseData(data);
     } catch (error) {
       console.error('Error generating course:', error);
-      alert('Error generating course. Please try again.');
+      setCourseData({ 
+        error: error.message || 'Failed to generate course. Please try again.' 
+      });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  // Handle video preview
+  const handlePreviewVideos = async (videoUrls) => {
+    try {
+      const data = await apiService.previewVideos(videoUrls);
+      setPreviewData(data);
+      alert(`Found ${data.total_videos} valid videos. Ready to generate course!`);
+    } catch (error) {
+      console.error('Error previewing videos:', error);
+      alert(`Preview failed: ${error.message || 'Please check your connection.'}`);
     }
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>StudyWeave AI</h1>
-        <p>Transform YouTube videos into structured learning courses</p>
+        <h1>🎓 StudyWeave AI</h1>
+        <p>Transform scattered YouTube videos into structured, interactive learning courses</p>
+        <div className="header-features">
+          <span>✨ AI-Powered Analysis</span>
+          <span>📚 Structured Learning</span>
+          <span>🧠 Interactive Quizzes</span>
+          <span>⏰ Timestamped Content</span>
+        </div>
       </header>
 
       <main className="App-main">
-        <div className="input-section">
-          <h2>Enter YouTube Video URLs</h2>
-          <textarea
-            value={videoUrls}
-            onChange={handleVideoInput}
-            placeholder="Paste YouTube video URLs here (one per line)&#10;Example:&#10;https://www.youtube.com/watch?v=VIDEO_ID_1&#10;https://www.youtube.com/watch?v=VIDEO_ID_2"
-            rows={6}
-            className="video-input"
-          />
-          <button 
-            onClick={handleGenerateCourse} 
-            disabled={isLoading}
-            className="generate-btn"
-          >
-            {isLoading ? 'Generating Course...' : 'Generate Course'}
-          </button>
-        </div>
+        <VideoInput 
+          onGenerateCourse={handleGenerateCourse}
+          onPreviewVideos={handlePreviewVideos}
+          isLoading={isLoading}
+        />
 
-        {courseData && (
-          <div className="course-section">
-            <h2>Generated Course</h2>
-            <pre>{JSON.stringify(courseData, null, 2)}</pre>
+        {previewData && !courseData && (
+          <div className="preview-section">
+            <h3>📹 Video Preview</h3>
+            <p>Found {previewData.total_videos} valid videos. Ready to generate your course!</p>
           </div>
         )}
+
+        <CourseViewer 
+          courseData={courseData}
+          isLoading={isLoading}
+        />
       </main>
+
+      <footer className="App-footer">
+        <p>Built with ❤️ for the hackathon - StudyWeave AI</p>
+      </footer>
     </div>
   );
 }
