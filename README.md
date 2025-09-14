@@ -208,11 +208,7 @@ REACT_APP_DEBUG=true npm start
 - **Progress Persistence**: localStorage tracking across sessions
 - **Video Recommendations**: AI-suggested learning sequences
 
-### ✅ **Technical Excellence**
-- **Scalable Architecture**: Clean service separation and modularity
-- **Docker Deployment**: Production-ready containerization
-- **Comprehensive Documentation**: Usage guides and technical docs
-- **Educational Impact**: Real learning value for students worldwide
+
 
 ## 📋 Project Structure
 
@@ -232,10 +228,7 @@ studygpt/
 
 ## 🎥 Demo & Documentation
 
-- **📺 [Demo Video](youtu.be/placeholder)** - Complete feature demonstration
-- **📚 [Usage Guide](docs/USAGE.md)** - Detailed user instructions  
-- **🏗️ [Architecture](docs/ARCHITECTURE.md)** - Technical documentation
-- **🎬 [Demo Materials](demo/)** - Screenshots and presentation materials
+- **📺 [Demo Video]()** - Complete feature demonstration
 
 ## 🚀 Deployment Options
 
