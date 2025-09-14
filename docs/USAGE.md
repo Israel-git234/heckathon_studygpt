@@ -129,10 +129,7 @@ python scripts/build_and_run.py --run-only
 - Ensure `backend/.env` file exists with valid API keys
 - Check API key format and permissions
 
-**"No transcripts found"**
-- Some YouTube videos don't have transcripts
-- The AI will generate content from title/description
-- Try different educational videos
+
 
 **"Frontend won't start"**
 - Run `npm install` in the `src` directory
@@ -156,9 +153,4 @@ python scripts/build_and_run.py --run-only
 ## 🔗 Demo Video
 [Watch Demo Video](youtu.be/placeholder)
 
-## 🆘 Support
-For issues or questions:
-1. Check this documentation
-2. Review error messages in browser console
-3. Check Docker/application logs
-4. Ensure all prerequisites are installed
+
