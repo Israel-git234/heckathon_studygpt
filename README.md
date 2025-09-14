@@ -228,7 +228,7 @@ studygpt/
 
 ## 🎥 Demo & Documentation
 
-- **📺 [Demo Video]()** - Complete feature demonstration
+- **📺 [Demo Video](https://youtu.be/x9DIDv6kEPM)** - Complete feature demonstration
 
 ## 🚀 Deployment Options
 
