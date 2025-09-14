@@ -229,6 +229,7 @@ studygpt/
 ## 🎥 Demo & Documentation
 
 - **📺 [Demo Video](https://youtu.be/x9DIDv6kEPM)** - Complete feature demonstration
+- **🎓 Power Point (https://uctcloud-my.sharepoint.com/:p:/g/personal/mthisr002_myuct_ac_za/EUpiSNlltElIjIuAWxupR_wBAK7AElCmTxrWrChqhARpIQ?e=erd5RQ)
 
 ## 🚀 Deployment Options
 
